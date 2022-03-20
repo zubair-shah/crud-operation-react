@@ -12,7 +12,8 @@ export default function Read() {
     const baseURL = 'https://62329eb28364d63035c03e41.mockapi.io/posts';
 
     const setData = (data) =>{
-        console.log(data)
+      var localData =  localStorage.setItem("dataId" , data.id)
+    
     }
 
     useEffect(() => {
@@ -23,7 +24,6 @@ export default function Read() {
       })
 
      
-    
       
     }, [])
     console.log(ApiData)
@@ -53,10 +53,12 @@ const getData = () => {
                     <Table.Row>
                        
                    
-                    <Table.HeaderCell>Id</Table.HeaderCell>
+                   
                         <Table.HeaderCell>Full Name</Table.HeaderCell>
                         <Table.HeaderCell>Age</Table.HeaderCell>
-                        <Table.HeaderCell >Actions</Table.HeaderCell>
+                        <Table.HeaderCell>Checked</Table.HeaderCell>
+                        <Table.HeaderCell >Update</Table.HeaderCell>
+                        <Table.HeaderCell >Delete</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -64,14 +66,19 @@ const getData = () => {
                    {ApiData.map((data) => {
                        return(
                         <Table.Row>
-                        <Table.Cell>{data.id}</Table.Cell>
                         <Table.Cell>{data.name}</Table.Cell>
                         <Table.Cell>{data.age}</Table.Cell>
+                        <Table.Cell>{`${data.checkbox}`}</Table.Cell>
                     
+                      
+                        <Table.Cell>
                         <Link to="/update">
-                        <Table.Cell><Button onClick={() => setData(data)}>Update</Button></Table.Cell>
-                        </Link>
+                            <Button onClick={() => setData(data)}>Update</Button>
+                            </Link>
+                            </Table.Cell>
                         <Table.Cell><Button onClick={() => deleteData(data.id)}>Delete</Button></Table.Cell>
+                            
+                        
 
                     </Table.Row>
                        )
