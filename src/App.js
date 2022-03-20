@@ -12,7 +12,7 @@ function App() {
     <div>
       <Router>
         <Routes>
-        <Route exact path={'/read'} element={<Read />} ></Route>
+        <Route exact path={'/'} element={<Read />} ></Route>
           <Route exact path={'/create'} element={<Create />} > </Route>
           <Route exact path={'/update'} element={<Update />} > </Route>
 
